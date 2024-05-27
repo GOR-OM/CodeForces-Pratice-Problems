@@ -65,37 +65,26 @@ const int MOD = 1e9 + 7;
 const long double pi=3.14159265358979323846264338327950288419716939937510582097494459230;
 
 
-void solve(int open,int close,int n,string s,vector<string> &ans)
-{
-    if(open==n && close==n)
-    {
-        ans.push_back(s);
-        return;
-    }
-    if(open<n)
-    {
-        s.push_back('(');
-        solve(open+1,close,n,s,ans);
-        s.pop_back();
-    }
-    if(close<open)
-    {
-        s.push_back(')');
-        solve(open,close+1,n,s,ans);
-        s.pop_back();
+void solve(int index , vector<int>&temp, vector<vector<int>>&ans,vector<int>& arr){
+    ans.push_back(temp);
+    for(int i=index; i<arr.size();i++){
+        if(i!=index && arr[i]==arr[i-1])continue;
+        temp.push_back(arr[i]);
+        solve(i+1,temp,ans,arr);
+        temp.pop_back();
     }
 }
 
 
 
-vector<string> generateParenthesis(int n) {
-    vector<string> ans;
-    string s;
-    solve(0,0,n,s,ans);
-    return ans;
+vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        vector<vector<int>>ans;
+        vector<int>temp;
+        solve(0,temp,ans,nums);
+        return ans;
 
-}
-
+    }
 
 
 
