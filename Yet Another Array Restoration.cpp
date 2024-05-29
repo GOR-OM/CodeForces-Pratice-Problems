@@ -68,7 +68,27 @@ const long double pi=3.141592653589793238462643383279502884197169399375105820974
 
 
 
-
+void solve(int x ,int y, int n ,vector<int>&ans){
+    for(int d=1; d<=y-x;d++){
+        vector<int>temp;
+        int val = y ;
+        while(temp.size()<n && val>0){
+            temp.pb(val);
+            val-=d;
+        }
+        if(temp.size()!=n){
+            val = y+d;
+            while(temp.size()<n){
+                temp.pb(val);
+                val+=d;
+            }
+        }
+        if(temp.size()==n && find(temp.begin(),temp.end(),x)!=temp.end() ){
+            ans = temp;
+            return ;
+        } ; 
+    }
+}
 
 
 
@@ -89,16 +109,20 @@ int main()
         int d = y-x;
         if(d%(n-1)==0){
             d /=(n-1) ;
-        }
-        else {
-            if(d%2==0)d/=2;
-        }
-        
-
-        for(int i=0;i<n;i++){
+            for(int i=0;i<n;i++){
             cout<<(x+ i*d)<<" ";
         }
         cout<<endl;
+        }
+        else {
+            vector<int> ans ; 
+            solve(x,y,n,ans );
+            fr(i,0,n)cout<<ans[i]<<" ";
+            cout<<"\n";
+        }
+        
+
+        
 
 
     }
