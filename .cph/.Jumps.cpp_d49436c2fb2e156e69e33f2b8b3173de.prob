@@ -1,0 +1,1 @@
+{"name":"Local: Jumps","url":"d:\\Code\\CodeForces Pratice Problems\\Jumps.cpp","tests":[{"id":1717126072038,"input":"5\n1\n2\n3\n4\n5\n","output":"1\n3\n2\n3\n4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Code\\CodeForces Pratice Problems\\Jumps.cpp","group":"local","local":true}
